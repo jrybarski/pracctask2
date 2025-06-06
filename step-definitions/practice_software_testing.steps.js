@@ -61,6 +61,7 @@ Given("the user is logged in", async () => {
   await $('[data-test="password"]').setValue("JKowalski123!");
   await $('[data-test="login-submit"]').click();
 });
+
 Given('the user is on the "Profile" page', async () => {
   await browser.url("/account/profile");
 });
