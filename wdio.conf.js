@@ -50,15 +50,15 @@ exports.config = {
   capabilities: [
     {
       browserName: "chrome",
-      "goog:chromeOptions": {
-        args: ["--headless", "--disable-gpu", "--window-size=1920,1080"],
-      },
+      // "goog:chromeOptions": {
+      //   args: ["--headless", "--disable-gpu", "--window-size=1920,1080"],
+      // },
     },
     {
       browserName: "MicrosoftEdge",
-      "ms:edgeOptions": {
-        args: ["--headless", "--disable-gpu", "--window-size=1920,1080"],
-      },
+      // "ms:edgeOptions": {
+      //   // args: ["--headless", "--disable-gpu", "--window-size=1920,1080"],
+      // },
     },
     // {
     //   browserName: "firefox",
