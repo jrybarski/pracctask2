@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "wdio run wdio.conf.js"
+    "test": "wdio run src/config/wdio.conf.js"
   },
   "keywords": [],
   "author": "",
