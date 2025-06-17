@@ -43,9 +43,9 @@ When("the user sign-up with valid credentials", async () => {
 
 Then('the user is redirected to the "Log in" page', async () => {
   await browser.pause(2000);
-  const expectedUrl = "https://practicesoftwaretesting.com/auth/login";
-  const currentUrl = await browser.getUrl();
-  expect(currentUrl).to.equal(expectedUrl);
+  expect(await browser.getUrl()).to.equal(
+    "https://practicesoftwaretesting.com/auth/login"
+  );
 });
 
 // Scenario: Successful User sign-in
@@ -59,9 +59,9 @@ When("the user logs in", async () => {
 
 Then('the user is redirected to the "My account" page', async () => {
   await browser.pause(2000);
-  const expectedUrl = "https://practicesoftwaretesting.com/account";
-  const currentUrl = await browser.getUrl();
-  expect(currentUrl).to.equal(expectedUrl);
+  expect(await browser.getUrl()).to.equal(
+    "https://practicesoftwaretesting.com/account"
+  );
 });
 
 // Scenario: Update User profile information
@@ -86,9 +86,7 @@ When("the user saves the changes", async () => {
 Then(
   'the user should see "Your profile is successfully updated!"',
   async () => {
-    const alert = await profilePage.updateProfileAlert;
-    const alertText = await alert.getText();
-    (await alert.isDisplayed()).should.be.true;
+    const alertText = await profilePage.updateProfileAlert.getText();
     alertText.should.equal("Your profile is successfully updated!");
   }
 );
@@ -105,9 +103,8 @@ When("the user click on a specific product", async () => {
 
 Then("the user is redirected to the product page", async () => {
   await browser.pause(1000);
-  const productImage = await productPage.combinationPiliers;
   assert.isTrue(
-    await productImage.isDisplayed(),
+    await productPage.combinationPiliers.isDisplayed(),
     "Product image should be displayed"
   );
 });
@@ -129,9 +126,7 @@ When(
 
 Then('the user should see "Product added to shopping cart"', async () => {
   await browser.pause(2000);
-  const toast = await $("div.toast-message");
-  const toastText = await toast.getText();
-  expect(await toast.isDisplayed()).to.be.true;
+  const toastText = await productPage.toast.getText();
   expect(toastText).to.equal("Product added to shopping cart.");
 });
 
@@ -145,8 +140,7 @@ When("the user click on checkbox near brand name", async () => {
 });
 
 Then("the search results display the matching products", async () => {
-  const hammerImage = await mainPage.hammer;
-  expect(await hammerImage.isDisplayed()).to.be.true;
+  expect(await mainPage.hammer.isDisplayed()).to.be.true;
 });
 
 // Scenario: Search for multiple product categories
@@ -163,10 +157,8 @@ Then(
   "the search results display products from the chosen categories",
   async () => {
     await browser.pause(2000);
-    const hammerImage = await mainPage.hammer;
-    const woodSawImage = await mainPage.woodSaw;
-    expect(await hammerImage.isDisplayed()).to.be.true;
-    expect(await woodSawImage.isDisplayed()).to.be.true;
+    expect(await await mainPage.hammer.isDisplayed()).to.be.true;
+    expect(await await mainPage.woodSaw.isDisplayed()).to.be.true;
   }
 );
 
@@ -176,9 +168,8 @@ Given("the website is in English", async () => {
 });
 
 When("the user clicks the language selection button", async () => {
-  const languageButton = await mainPage.languageButton;
-  await languageButton.waitForClickable({ timeout: 5000 });
-  await languageButton.click();
+  await mainPage.languageButton.waitForClickable({ timeout: 5000 });
+  await mainPage.languageButton.click();
 });
 
 When("chooses a different language from the list", async () => {
@@ -188,7 +179,6 @@ When("chooses a different language from the list", async () => {
 
 Then("the website should change to the chosen language", async () => {
   await browser.pause(1500);
-  const navHome = await mainPage.navHome;
-  const navText = await navHome.getText();
+  const navText = await mainPage.navHome.getText();
   expect(navText).to.equal("Accueil");
 });
